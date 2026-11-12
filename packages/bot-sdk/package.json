@@ -1,0 +1,22 @@
+{
+  "name": "@pulse/bot-sdk",
+  "version": "0.1.0",
+  "description": "Official TypeScript Bot SDK for Pulse Platform with Interactive Cards and Webhooks",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.2",
+    "tsup": "^8.5.1",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8"
+  }
+}

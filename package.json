@@ -1,0 +1,14 @@
+{
+  "name": "pulse-react",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pulse React & Bot Ecosystem: Headless Hooks, UI Kit, React Native, Bot SDK and Examples",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "typecheck": "pnpm -r run typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.2"
+  }
+}
