@@ -8,6 +8,7 @@ import { useTranslation } from "react-i18next";
  * Business Logic:
  * Renders a mobile-width shell with sticky bottom tabs for 'Chats' and 'Settings'.
  * Highlights active tab according to current route location.
+ * Styled with Light Mode per Rule 9.
  */
 export const MobileLayout: React.FC = () => {
   const { t } = useTranslation();
@@ -18,19 +19,19 @@ export const MobileLayout: React.FC = () => {
   const isSettings = location.pathname.startsWith("/settings");
 
   return (
-    <div className="flex justify-center min-h-screen bg-gray-200 dark:bg-gray-950 sm:py-6">
-      <div className="w-full max-w-md h-screen sm:h-[844px] flex flex-col bg-white dark:bg-gray-900 shadow-2xl sm:rounded-3xl overflow-hidden border border-gray-300 dark:border-gray-800">
+    <div className="flex justify-center min-h-screen bg-slate-100 sm:py-6">
+      <div className="w-full max-w-md h-screen sm:h-[844px] flex flex-col bg-white shadow-2xl sm:rounded-3xl overflow-hidden border border-slate-200">
         <main className="flex-1 overflow-y-auto">
           <Outlet />
         </main>
 
-        <nav className="h-16 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 flex items-center justify-around px-4">
+        <nav className="h-16 border-t border-slate-200 bg-white flex items-center justify-around px-4">
           <button
             onClick={() => navigate("/conversations")}
             className={`flex flex-col items-center gap-1 py-1 px-4 rounded-xl transition ${
               isConversations
-                ? "text-blue-600 dark:text-blue-400 font-semibold"
-                : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                ? "text-blue-600 font-semibold"
+                : "text-slate-500 hover:text-slate-800"
             }`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -43,8 +44,8 @@ export const MobileLayout: React.FC = () => {
             onClick={() => navigate("/settings")}
             className={`flex flex-col items-center gap-1 py-1 px-4 rounded-xl transition ${
               isSettings
-                ? "text-blue-600 dark:text-blue-400 font-semibold"
-                : "text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+                ? "text-blue-600 font-semibold"
+                : "text-slate-500 hover:text-slate-800"
             }`}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,4 +59,3 @@ export const MobileLayout: React.FC = () => {
     </div>
   );
 };
-

@@ -16,7 +16,7 @@ export interface ThemeProviderProps {
  * @param props.children React component subtree
  */
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
-  initialMode = "system",
+  initialMode = "light",
   children,
 }) => {
   const [mode, setMode] = useState<ThemeMode>(initialMode);
@@ -24,22 +24,11 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
   useEffect(() => {
     const updateTheme = () => {
-      if (mode === "system") {
-        const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-        setResolvedTheme(prefersDark ? "dark" : "light");
-      } else {
-        setResolvedTheme(mode);
-      }
+      // Per Rule 9: light mode is the strict workspace default
+      setResolvedTheme(mode === "dark" ? "dark" : "light");
     };
 
     updateTheme();
-
-    if (mode === "system" && window.matchMedia) {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-      const handler = () => updateTheme();
-      mediaQuery.addEventListener("change", handler);
-      return () => mediaQuery.removeEventListener("change", handler);
-    }
   }, [mode]);
 
   const toggleTheme = () => {

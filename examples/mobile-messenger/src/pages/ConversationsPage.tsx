@@ -11,6 +11,7 @@ import { StoredConversation } from "@pulse/client-sdk";
  * Fetches stored conversations from the mobile client's conversation manager.
  * Provides modal/input to start a new chat with another user ID and navigates
  * to /conversations/:conversationId on item selection.
+ * Styled with Light Mode per Rule 9.
  */
 export const ConversationsPage: React.FC = () => {
   const { t } = useTranslation();
@@ -56,14 +57,14 @@ export const ConversationsPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full">
-      <header className="p-4 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur z-10">
-        <h1 className="text-xl font-bold text-gray-900 dark:text-white">
+    <div className="flex flex-col h-full bg-white">
+      <header className="p-4 border-b border-slate-200 flex items-center justify-between sticky top-0 bg-white/90 backdrop-blur z-10">
+        <h1 className="text-xl font-bold text-slate-900">
           {t("chats.title")}
         </h1>
         <button
           onClick={() => setShowNewModal(true)}
-          className="p-2 rounded-full bg-blue-50 dark:bg-blue-950 text-blue-600 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900 transition"
+          className="p-2 rounded-full bg-blue-50 text-blue-600 hover:bg-blue-100 transition"
           title={t("chats.newChat")}
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -73,7 +74,7 @@ export const ConversationsPage: React.FC = () => {
       </header>
 
       {showNewModal && (
-        <div className="p-4 bg-gray-50 dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 animate-fade-in">
+        <div className="p-4 bg-slate-50 border-b border-slate-200 animate-fade-in">
           <form onSubmit={handleStartChat} className="flex gap-2">
             <input
               type="text"
@@ -81,7 +82,7 @@ export const ConversationsPage: React.FC = () => {
               onChange={(e) => setNewChatUserId(e.target.value)}
               placeholder={t("chats.targetUserPlaceholder")}
               autoFocus
-              className="flex-1 px-3 py-2 text-sm rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-900 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="flex-1 px-3 py-2 text-sm rounded-lg border border-slate-300 bg-white text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
             <button
               type="submit"
@@ -93,9 +94,9 @@ export const ConversationsPage: React.FC = () => {
         </div>
       )}
 
-      <div className="flex-1 overflow-y-auto divide-y divide-gray-100 dark:divide-gray-800">
+      <div className="flex-1 overflow-y-auto divide-y divide-slate-100">
         {conversations.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-64 text-gray-400 dark:text-gray-500 text-sm px-6 text-center">
+          <div className="flex flex-col items-center justify-center h-64 text-slate-400 text-sm px-6 text-center">
             <svg className="w-12 h-12 mb-2 stroke-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
@@ -106,21 +107,21 @@ export const ConversationsPage: React.FC = () => {
             <div
               key={c.convID}
               onClick={() => navigate(`/conversations/${c.convID}`)}
-              className="p-4 flex items-center gap-3 hover:bg-gray-50 dark:hover:bg-gray-800/50 cursor-pointer transition"
+              className="p-4 flex items-center gap-3 hover:bg-slate-50 cursor-pointer transition"
             >
-              <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/60 text-blue-600 dark:text-blue-300 font-bold flex items-center justify-center text-lg shrink-0">
+              <div className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 font-bold flex items-center justify-center text-lg shrink-0">
                 {(c.title || c.convID).slice(0, 1).toUpperCase()}
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center justify-between mb-1">
-                  <h3 className="font-semibold text-gray-900 dark:text-white truncate text-sm">
+                  <h3 className="font-semibold text-slate-900 truncate text-sm">
                     {c.title || c.convID}
                   </h3>
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-slate-400">
                     {new Date(c.updatedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500 dark:text-gray-400 truncate">
+                <p className="text-xs text-slate-500 truncate">
                   {c.lastMessage?.content?.text || ""}
                 </p>
               </div>

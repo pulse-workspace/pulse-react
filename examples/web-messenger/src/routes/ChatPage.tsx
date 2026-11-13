@@ -70,7 +70,7 @@ export const ChatPage: React.FC = () => {
   return (
     <div className="flex h-full w-full overflow-hidden">
       {/* Sidebar List (Visible on tablet & desktop) */}
-      <div className="hidden md:flex w-80 flex-shrink-0 flex-col h-full border-r border-gray-200 dark:border-gray-800">
+      <div className="hidden md:flex w-80 flex-shrink-0 flex-col h-full border-r border-gray-200 bg-white">
         <ConversationList
           conversations={conversations}
           selectedConvId={convId}
@@ -80,7 +80,7 @@ export const ChatPage: React.FC = () => {
       </div>
 
       {/* Active Chat Main Area */}
-      <div className="flex-1 flex flex-col h-full bg-white dark:bg-gray-900 overflow-hidden">
+      <div className="flex-1 flex flex-col h-full bg-white overflow-hidden">
         {/* Header */}
         <ConversationHeader
           conversation={activeConversation}

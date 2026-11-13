@@ -4,6 +4,7 @@ import { useAuth } from "../auth/auth-store";
 
 /**
  * User registration page route.
+ * Strictly complies with Rule 9 (Strict Light Mode).
  */
 export const RegisterPage: React.FC = () => {
   const navigate = useNavigate();
@@ -30,7 +31,7 @@ export const RegisterPage: React.FC = () => {
   return (
     <form onSubmit={handleRegister} className="space-y-4">
       <div>
-        <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-xs font-medium text-gray-700 mb-1">
           Desired User ID
         </label>
         <input
@@ -39,12 +40,12 @@ export const RegisterPage: React.FC = () => {
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
           placeholder="username"
-          className="w-full px-3.5 py-2 text-sm rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-3.5 py-2 text-sm rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
+        <label className="block text-xs font-medium text-gray-700 mb-1">
           Full Name
         </label>
         <input
@@ -53,7 +54,7 @@ export const RegisterPage: React.FC = () => {
           value={displayName}
           onChange={(e) => setDisplayName(e.target.value)}
           placeholder="Display Name"
-          className="w-full px-3.5 py-2 text-sm rounded-lg bg-gray-50 dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="w-full px-3.5 py-2 text-sm rounded-lg bg-gray-50 border border-gray-200 text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
         />
       </div>
 
@@ -66,11 +67,10 @@ export const RegisterPage: React.FC = () => {
 
       <p className="text-center text-xs text-gray-500">
         Already have an account?{" "}
-        <Link to="/login" className="text-indigo-600 dark:text-indigo-400 font-semibold hover:underline">
+        <Link to="/login" className="text-indigo-600 font-semibold hover:underline">
           Sign in
         </Link>
       </p>
     </form>
   );
 };
-

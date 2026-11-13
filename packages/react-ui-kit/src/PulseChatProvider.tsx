@@ -24,7 +24,7 @@ export interface PulseChatProviderProps {
 export const PulseChatProvider: React.FC<PulseChatProviderProps> = ({
   client,
   initialLocale = "en",
-  initialThemeMode = "system",
+  initialThemeMode = "light",
   children,
 }) => {
   return (

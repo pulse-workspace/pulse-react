@@ -10,6 +10,7 @@ import { StoredMessage } from "@pulse/client-sdk";
  * Business Logic:
  * Loads cached conversation history from local storage adapter, subscribes to
  * real-time messages, marks messages as read, and supports optimistic sending.
+ * Styled with Light Mode per Rule 9.
  */
 export const ChatRoomPage: React.FC = () => {
   const { conversationId } = useParams<{ conversationId: string }>();
@@ -72,21 +73,21 @@ export const ChatRoomPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col h-full bg-gray-50 dark:bg-gray-900">
-      <header className="p-3 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 flex items-center gap-3 sticky top-0 z-10">
+    <div className="flex flex-col h-full bg-slate-50">
+      <header className="p-3 border-b border-slate-200 bg-white flex items-center gap-3 sticky top-0 z-10">
         <button
           onClick={() => navigate("/conversations")}
-          className="p-1 rounded-lg text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800"
+          className="p-1 rounded-lg text-slate-600 hover:bg-slate-100"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
         <div className="flex-1 min-w-0">
-          <h2 className="text-sm font-bold text-gray-900 dark:text-white truncate">
+          <h2 className="text-sm font-bold text-slate-900 truncate">
             {conversationId}
           </h2>
-          <span className="text-xs text-green-500 font-medium">Online</span>
+          <span className="text-xs text-green-600 font-medium">Online</span>
         </div>
       </header>
 
@@ -102,12 +103,12 @@ export const ChatRoomPage: React.FC = () => {
                 className={`max-w-[75%] px-3.5 py-2 rounded-2xl text-sm shadow-sm ${
                   isMe
                     ? "bg-blue-600 text-white rounded-br-xs"
-                    : "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 rounded-bl-xs"
+                    : "bg-white text-slate-900 border border-slate-200 rounded-bl-xs"
                 }`}
               >
                 {m.content?.text || ""}
               </div>
-              <div className="flex items-center gap-1 mt-1 text-[10px] text-gray-400">
+              <div className="flex items-center gap-1 mt-1 text-[10px] text-slate-400">
                 <span>{new Date(m.sendTime).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}</span>
                 {isMe && <span>• {m.status}</span>}
               </div>
@@ -117,13 +118,13 @@ export const ChatRoomPage: React.FC = () => {
         <div ref={messagesEndRef} />
       </div>
 
-      <form onSubmit={handleSend} className="p-3 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 flex gap-2">
+      <form onSubmit={handleSend} className="p-3 border-t border-slate-200 bg-white flex gap-2">
         <input
           type="text"
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder={t("chat.inputPlaceholder")}
-          className="flex-1 px-4 py-2 text-sm rounded-full border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 px-4 py-2 text-sm rounded-full border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           type="submit"

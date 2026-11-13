@@ -9,6 +9,7 @@ import { initializeClient } from "../services/client";
  * Business Logic:
  * Accepts userId and auth token. Validates inputs, saves to localStorage,
  * establishes live connection via initializeClient(), and navigates to /conversations.
+ * Styled with Light Mode per Rule 9.
  */
 export const LoginPage: React.FC = () => {
   const { t, i18n } = useTranslation();
@@ -39,12 +40,12 @@ export const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen bg-gray-200 dark:bg-gray-950 sm:py-6">
-      <div className="w-full max-w-md h-screen sm:h-[844px] flex flex-col justify-between p-6 bg-white dark:bg-gray-900 shadow-2xl sm:rounded-3xl border border-gray-300 dark:border-gray-800">
+    <div className="flex justify-center min-h-screen bg-slate-100 sm:py-6">
+      <div className="w-full max-w-md h-screen sm:h-[844px] flex flex-col justify-between p-6 bg-white shadow-2xl sm:rounded-3xl border border-slate-200">
         <div className="flex justify-end">
           <button
             onClick={() => i18n.changeLanguage(i18n.language === "en" ? "vi" : "en")}
-            className="text-xs px-2.5 py-1 rounded bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 font-medium"
+            className="text-xs px-2.5 py-1 rounded bg-slate-100 text-slate-700 font-medium hover:bg-slate-200"
           >
             {i18n.language === "en" ? "VI" : "EN"}
           </button>
@@ -57,22 +58,22 @@ export const LoginPage: React.FC = () => {
             </svg>
           </div>
 
-          <h1 className="text-2xl font-bold text-center text-gray-900 dark:text-white">
+          <h1 className="text-2xl font-bold text-center text-slate-900">
             {t("auth.title")}
           </h1>
-          <p className="text-sm text-center text-gray-500 dark:text-gray-400 mt-1 mb-8">
+          <p className="text-sm text-center text-slate-500 mt-1 mb-8">
             {t("auth.subtitle")}
           </p>
 
           {error && (
-            <div className="mb-4 p-3 rounded-xl bg-red-50 dark:bg-red-950/50 border border-red-200 dark:border-red-800 text-sm text-red-600 dark:text-red-400">
+            <div className="mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-sm text-red-600">
               {error}
             </div>
           )}
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">
                 {t("auth.userIdLabel")}
               </label>
               <input
@@ -81,12 +82,12 @@ export const LoginPage: React.FC = () => {
                 onChange={(e) => setUserId(e.target.value)}
                 placeholder={t("auth.userIdPlaceholder")}
                 required
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-gray-600 dark:text-gray-400 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-600 mb-1">
                 {t("auth.tokenLabel")}
               </label>
               <input
@@ -95,7 +96,7 @@ export const LoginPage: React.FC = () => {
                 onChange={(e) => setToken(e.target.value)}
                 placeholder={t("auth.tokenPlaceholder")}
                 required
-                className="w-full px-4 py-2.5 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className="w-full px-4 py-2.5 rounded-xl border border-slate-300 bg-slate-50 text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
             </div>
 
@@ -109,11 +110,10 @@ export const LoginPage: React.FC = () => {
           </form>
         </div>
 
-        <div className="text-center text-xs text-gray-400 dark:text-gray-600">
+        <div className="text-center text-xs text-slate-400">
           Pulse Real-Time Architecture &copy; 2026
         </div>
       </div>
     </div>
   );
 };
-
